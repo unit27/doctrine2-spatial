@@ -58,7 +58,7 @@ class MySql extends AbstractPlatform
      */
     public function convertToPHPValueSQL(AbstractSpatialType $type, $sqlExpr)
     {
-        return sprintf('ST_AsBinary(%s)', $sqlExpr); // @TODO changed by 'PA'
+        return sprintf('ST_AsBinary(%s)', $sqlExpr);
     }
 
     /**
@@ -69,6 +69,6 @@ class MySql extends AbstractPlatform
      */
     public function convertToDatabaseValueSQL(AbstractSpatialType $type, $sqlExpr)
     {
-        return sprintf('ST_GeomFromText(%s)', $sqlExpr); // @TODO changed by 'PA'
+        return sprintf('ST_GeomFromText(%s)', $sqlExpr);
     }
 }
