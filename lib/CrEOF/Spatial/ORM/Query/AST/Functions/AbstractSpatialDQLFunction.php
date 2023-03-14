@@ -65,6 +65,11 @@ abstract class AbstractSpatialDQLFunction extends FunctionNode
     protected $maxGeomExpr;
 
     /**
+     * @var string
+     */
+    protected $extraType = "";
+
+    /**
      * @param Parser $parser
      */
     public function parse(Parser $parser)
@@ -99,7 +104,7 @@ abstract class AbstractSpatialDQLFunction extends FunctionNode
             $arguments[] = $expression->dispatch($sqlWalker);
         }
 
-        return sprintf('%s(%s)', $this->functionName, implode(', ', $arguments));
+        return sprintf('%s(%s)%s', $this->functionName, implode(', ', $arguments), $this->extraType !== "" ? "::" . $this->extraType : "");
     }
 
     /**

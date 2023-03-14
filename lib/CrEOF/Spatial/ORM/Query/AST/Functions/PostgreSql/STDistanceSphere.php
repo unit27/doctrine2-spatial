@@ -35,7 +35,7 @@ class STDistanceSphere extends AbstractSpatialDQLFunction
 {
     protected $platforms = array('postgresql');
 
-    protected $functionName = 'ST_Distance_Sphere';
+    protected $functionName = 'ST_DistanceSphere';
 
     protected $minGeomExpr = 2;
 

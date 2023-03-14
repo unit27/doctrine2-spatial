@@ -40,4 +40,6 @@ class STMakePoint extends AbstractSpatialDQLFunction
     protected $minGeomExpr = 2;
 
     protected $maxGeomExpr = 3;
+
+    protected $extraType = "geography";
 }
