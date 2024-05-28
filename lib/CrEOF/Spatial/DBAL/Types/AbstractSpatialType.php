@@ -201,10 +201,20 @@ abstract class AbstractSpatialType extends Type
      */
     private function getSpatialPlatform(AbstractPlatform $platform)
     {
-        $const = sprintf('self::PLATFORM_%s', strtoupper($platform->getName()));
+        $platformName = "unknown";
+
+        if ($platform instanceof \Doctrine\DBAL\Platforms\PostgreSQLPlatform) {
+            $platformName = "PostgreSql";
+        }
+
+        else if ($platform instanceof \Doctrine\DBAL\Platforms\MySQLPlatform) {
+            $platform = "MySql";
+        }
+
+        $const = sprintf('self::PLATFORM_%s', strtoupper($platformName));
 
         if (! defined($const)) {
-            throw new UnsupportedPlatformException(sprintf('DBAL platform "%s" is not currently supported.', $platform->getName()));
+            throw new UnsupportedPlatformException(sprintf('DBAL platform "%s" is not currently supported.', $platformName));
         }
 
         $class = sprintf('CrEOF\Spatial\DBAL\Platform\%s', constant($const));
